@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle("ATENCIÓN")
                 .setMessage("¿Que se desea hacer con el conductor seleccionado?"+"\n\n"+ "${driverList.getItemAtPosition(position)}")
-                .setPositiveButton("EDITAR"){d, i-> updateDriver(selectedId)}
+                .setPositiveButton("INSPECCIONAR"){d, i-> updateDriver(selectedId)}
                 .setNegativeButton("ELIMINAR"){d,i-> deleteDriver(selectedId)}
                 .setNeutralButton("CANCELAR"){d,i-> d.cancel()}
                 .show()

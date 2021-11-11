@@ -34,8 +34,8 @@ class Driver(driver: Context) {
         if (cursor.moveToFirst()){ //Se mueve a la primer posición del select y si hay un dato returna un true
             var datas = ""
             do {
-                datas = cursor.getString(1)+"\n"+cursor.getString(2)+"\n"+
-                        cursor.getString(3)+"\n"+cursor.getString(4)
+                datas = cursor.getString(1)+" - "+cursor.getString(2)+"\n"+
+                        cursor.getString(3)+" - "+cursor.getString(4)
                 queryResult.add(datas)
             }while (cursor.moveToNext())
         }else{
