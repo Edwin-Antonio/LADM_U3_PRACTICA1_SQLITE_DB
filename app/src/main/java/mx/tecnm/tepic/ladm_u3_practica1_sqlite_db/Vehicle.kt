@@ -25,8 +25,7 @@ class Vehicle(vehicle: Context) {
             var datas = ""
             do {
                 datas = cursor.getString(1)+" - "+cursor.getString(2)+"\n"+
-                        cursor.getString(3)+" - "+cursor.getString(4)+"\n"+
-                        cursor.getString(0)
+                        cursor.getString(3)+" - "+cursor.getString(4)
                 queryResult.add(datas)
             }while (cursor.moveToNext())
         }else{
