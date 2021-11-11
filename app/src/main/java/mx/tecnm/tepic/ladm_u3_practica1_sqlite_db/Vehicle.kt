@@ -19,7 +19,7 @@ class Vehicle(vehicle: Context) {
         //Cursor = objeto que tiene el resulado de un select
         val drivTable = DataBase(act,"API11",null,1).readableDatabase
         val queryResult = java.util.ArrayList<String>()
-        //SELECT * FROM CONDUCTOR                                               //ID_CONDUCTOR=? arrayOf(id) ESTE ESTA BIEN, NO SE MUEVE
+        //SELECT * FROM CONDUCTOR                                               //ID_CONDUCTOR=? arrayOf(id)
         val cursor = drivTable.query("VEHICULO", arrayOf("*"), "ID_CONDUCTOR=?", arrayOf(id),null,null,null)
         if (cursor.moveToFirst()){ //Se mueve a la primer posición del select y si hay un dato returna un true
             var datas = ""
@@ -56,7 +56,7 @@ class Vehicle(vehicle: Context) {
         //Cursor = objeto que tiene el resulado de un select
         val vehicleTable = DataBase(act,"API11",null,1).readableDatabase
         val queryResult = java.util.ArrayList<Int>()
-        //SELECT * FROM CONDUCTOR
+        //SELECT * FROM VHICULO
         val cursor = vehicleTable.query("VEHICULO", arrayOf("*"), "ID_CONDUCTOR=?", arrayOf(id),null,null,null)
         if (cursor.moveToFirst()){ //Se mueve a la primer posición del select y si hay un dato returna un true
             do {

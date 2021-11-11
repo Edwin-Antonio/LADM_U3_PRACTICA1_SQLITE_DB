@@ -95,7 +95,7 @@ class UpdateActivity : AppCompatActivity() {
             .show()
     }
 
-    //el problema es este
+
     private fun eventAction(vehicleList : ListView){
         vehicleList.setOnItemClickListener { parent, view, position, id ->
             val selectedId = idVehicle[position]
