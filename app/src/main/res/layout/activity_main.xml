@@ -67,11 +67,22 @@
                 android:backgroundTint="#7925D3D3"
                 android:text="Create"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:background="#B2020B61"
+                android:text="Trabajadores"/>
+
             <ListView
                 android:id="@+id/lists"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:background="@color/white"
+                android:layout_height="150dp"
+                android:background="#CBFFFFFF"
                 android:layout_margin="5dp"/>
 
             <Button

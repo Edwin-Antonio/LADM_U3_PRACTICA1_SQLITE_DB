@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo9"
-    tools:context=".VehicleActivity">
+    android:background="@drawable/fondo15"
+    tools:context=".UpdateVehicle">
 
     <EditText
-        android:id="@+id/licencePlate"
+        android:id="@+id/licencePlateUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -18,7 +18,7 @@
         android:hint="Licence Plates"/>
 
     <EditText
-        android:id="@+id/brand"
+        android:id="@+id/brandUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -27,7 +27,7 @@
         android:hint="Vehicle Brand"/>
 
     <EditText
-        android:id="@+id/model"
+        android:id="@+id/modelUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -36,7 +36,7 @@
         android:hint="Vehicle Model"/>
 
     <EditText
-        android:id="@+id/year"
+        android:id="@+id/yearUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -46,21 +46,21 @@
         android:hint="Vehicle Year"/>
 
     <Button
-        android:id="@+id/btn_updateVehicle"
+        android:id="@+id/btn_updateVehicleDriver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:backgroundTint="#792BD325"
-        android:text="INSERT"/>
+        android:text="update"/>
 
     <Button
-        android:id="@+id/btn_backDriver"
+        android:id="@+id/btn_backVehicleDriver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:backgroundTint="#9F3125D3"
-        android:text="BACK"/>
+        android:text="Back Driver"/>
 
 </LinearLayout>

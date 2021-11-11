@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_export.setOnClickListener {
-            val driver = Driver(this).export()
             if(Driver(this).export()){
                 Toast.makeText(this,"¡¡ARCHIVO EXPORTADO CON EXITO!!",Toast.LENGTH_LONG).show()
             }else{

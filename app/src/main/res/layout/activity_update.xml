@@ -55,41 +55,62 @@
                 android:textColorHint="@color/white"
                 android:layout_margin="10dp"
                 android:hint="Date (MM/DD/YYYY)"/>
-
-
-
             <Button
                 android:id="@+id/btn_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:textStyle="bold"
                 android:backgroundTint="#792BD325"
                 android:text="Update"/>
 
-            <Button
-                android:id="@+id/btn_back"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textStyle="bold"
-                android:backgroundTint="#7925D3D3"
-                android:text="Regresar"/>
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:background="#B2020B61"
+                android:text="Vehiculos del Trabajador"/>
 
             <ListView
                 android:id="@+id/listsVehicle"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="#6F466AA1"
+                android:layout_height="130dp"
+                android:background="#BCC5D9F1"
                 android:layout_margin="5dp"/>
 
             <Button
                 android:id="@+id/btn_vehicleInsert"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Ingresar vehiculo"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:backgroundTint="#9E7A0DF8"
+                android:text="Insert Vehicle"
                 />
+
+            <Button
+                android:id="@+id/btn_exportVehicles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:backgroundTint="#792BD325"
+                android:text="Export Document"/>
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:backgroundTint="#7925D3D3"
+                android:text="Back last page"/>
         </LinearLayout>
     </ScrollView>
 

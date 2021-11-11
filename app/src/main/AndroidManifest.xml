@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LADM_U3_PRACTICA1_SQLITE_DB">
-        <activity android:name=".VehicleActivity"></activity>
+        <activity android:name=".UpdateVehicle"></activity>
+        <activity android:name=".VehicleActivity" />
         <activity android:name=".UpdateActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

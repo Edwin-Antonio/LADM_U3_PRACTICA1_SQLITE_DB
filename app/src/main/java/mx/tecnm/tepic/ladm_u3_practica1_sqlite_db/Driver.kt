@@ -16,7 +16,7 @@ class Driver(driver: Context) {
     var dueDate = ""
 
     fun insert() : Boolean{
-        val drivTable = DataBase(act,"API10",null,1).writableDatabase
+        val drivTable = DataBase(act,"API11",null,1).writableDatabase
         var data = ContentValues()
         data.put("nombre",name)
         data.put("domicilio",address)
@@ -32,7 +32,7 @@ class Driver(driver: Context) {
 
     fun request() : ArrayList<String>{
         //Cursor = objeto que tiene el resulado de un select
-        val drivTable = DataBase(act,"API10",null,1).readableDatabase
+        val drivTable = DataBase(act,"API11",null,1).readableDatabase
         val queryResult = java.util.ArrayList<String>()
         //SELECT * FROM CONDUCTOR
         val cursor = drivTable.query("CONDUCTOR", arrayOf("*"), null,null,null,null,null)
@@ -52,7 +52,7 @@ class Driver(driver: Context) {
 
     fun getIds() : ArrayList<Int>{
         //Cursor = objeto que tiene el resulado de un select
-        val drivTable = DataBase(act,"API10",null,1).readableDatabase
+        val drivTable = DataBase(act,"API11",null,1).readableDatabase
         val queryResult = java.util.ArrayList<Int>()
         //SELECT * FROM CONDUCTOR
         val cursor = drivTable.query("CONDUCTOR", arrayOf("*"), null,null,null,null,null)
@@ -66,18 +66,20 @@ class Driver(driver: Context) {
     }
 
     fun delete(id: Int ) : Boolean{
-        val drivTable = DataBase(act,"API10",null,1).writableDatabase
+        val drivTable = DataBase(act,"API11",null,1).writableDatabase
         val result = drivTable.delete("CONDUCTOR","ID_CONDUCTOR=?", arrayOf(id.toString()))
         if(result == 0){
+            drivTable.close()
             return false
         }
+        drivTable.close()
         return true
     }
 
     // Necesarios para cuando queramos hacer un UPDATE
 
     fun search(id: String) : Driver{
-        val drivTable = DataBase(act,"API10",null,1).readableDatabase
+        val drivTable = DataBase(act,"API11",null,1).readableDatabase
         val cursor = drivTable.query("CONDUCTOR", arrayOf("*"),"ID_CONDUCTOR=?", arrayOf(id),null,null,null)
         val driver = Driver(MainActivity())
         if(cursor.moveToFirst()){
@@ -90,7 +92,7 @@ class Driver(driver: Context) {
     }
 
     fun update(id: String) : Boolean{
-        val drivTable = DataBase(act,"API10",null,1).writableDatabase
+        val drivTable = DataBase(act,"API11",null,1).writableDatabase
         val data = ContentValues()
         data.put("nombre",name)
         data.put("domicilio",address)
@@ -101,7 +103,6 @@ class Driver(driver: Context) {
         // si regresa 0 entonces no actualizo = NO SE PUDO
         drivTable.close()
         if (result == 0) return false
-        return true
         return true
     }
 
@@ -119,17 +120,17 @@ class Driver(driver: Context) {
             val documents = FileWriter(fileNameAndPath)
 
             // Abriendo la base de datos
-            val drivTable = DataBase(act,"API10",null,1).readableDatabase
+            val drivTable = DataBase(act,"API11",null,1).readableDatabase
             val cursor = drivTable.query("CONDUCTOR", arrayOf("*"),null,null,null,null,null)
             if(cursor.moveToFirst()){
                 do {
-                    documents.append("${cursor.getString(0)}")
+                    documents.append("Id_Conductor: ${cursor.getString(0)} ")
                     documents.append(",")
-                    documents.append("${cursor.getString(1)}")
+                    documents.append("Nombre: ${cursor.getString(1)} ")
                     documents.append(",")
-                    documents.append("${cursor.getString(2)}")
+                    documents.append("Domicilio: ${cursor.getString(2)} ")
                     documents.append(",")
-                    documents.append("${cursor.getString(3)}")
+                    documents.append("NoLicencia: ${cursor.getString(3)} ")
                     documents.append(",")
                     documents.append("${cursor.getString(4)}")
                     documents.append(",")

@@ -59,6 +59,14 @@ class UpdateActivity : AppCompatActivity() {
                 .setNegativeButton("NO"){d,i-> d.cancel()}
                 .show()
         }
+
+        btn_exportVehicles.setOnClickListener {
+            if(Vehicle(this).export()){
+                Toast.makeText(this,"¡¡ARCHIVO EXPORTADO CON EXITO!!",Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this,"NO SE PUDO EXPORTAR EL ARCHIVO",Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun listResultUpdate(){
@@ -66,7 +74,7 @@ class UpdateActivity : AppCompatActivity() {
         val result = Vehicle(this).request(id)
         listsVehicle.adapter = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,result)
         idVehicle.clear()
-        idVehicle = Vehicle(this).getIds()
+        idVehicle = Vehicle(this).getIds(id)
         eventAction(listsVehicle)
     }
     private fun cleanUpdateText(){
@@ -77,9 +85,9 @@ class UpdateActivity : AppCompatActivity() {
     }
 
     private fun updateVehicle(id: Int){
-        val caller2 = Intent(this,VehicleActivity::class.java)
-        caller2.putExtra("idUpdateDriver",id)
-        startActivity(caller2)
+        val caller3 = Intent(this,UpdateVehicle::class.java)
+        caller3.putExtra("idUpdateVehicle",id.toString())
+        startActivity(caller3)
         AlertDialog.Builder(this)
             .setMessage("¿Deseas actualizar la lista?")
             .setPositiveButton("SI"){d, i-> listResultUpdate()}
@@ -87,13 +95,14 @@ class UpdateActivity : AppCompatActivity() {
             .show()
     }
 
+    //el problema es este
     private fun eventAction(vehicleList : ListView){
         vehicleList.setOnItemClickListener { parent, view, position, id ->
             val selectedId = idVehicle[position]
             AlertDialog.Builder(this)
                 .setTitle("ATENCIÓN")
-                .setMessage("¿Que se desea hacer con el conductor seleccionado?"+"\n\n"+ "${vehicleList.getItemAtPosition(position)}")
-                .setPositiveButton("EDITAR"){d, i-> /*updateDriver(selectedId)*/}
+                .setMessage("¿Que se desea hacer con el vehiculo seleccionado?"+"\n\n"+ "${vehicleList.getItemAtPosition(position)}")
+                .setPositiveButton("EDITAR"){d, i-> updateVehicle(selectedId)}
                 .setNegativeButton("ELIMINAR"){d,i-> deleteVehicle(selectedId)}
                 .setNeutralButton("CANCELAR"){d,i-> d.cancel()}
                 .show()
