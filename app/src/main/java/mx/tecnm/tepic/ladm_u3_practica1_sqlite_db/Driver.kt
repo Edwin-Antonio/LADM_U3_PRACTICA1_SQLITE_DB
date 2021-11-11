@@ -2,6 +2,11 @@ package mx.tecnm.tepic.ladm_u3_practica1_sqlite_db
 
 import android.content.ContentValues
 import android.content.Context
+import android.os.Environment
+import android.widget.Toast
+import java.io.File
+import java.io.FileWriter
+import java.lang.Exception
 
 class Driver(driver: Context) {
     var act = driver
@@ -98,5 +103,45 @@ class Driver(driver: Context) {
         if (result == 0) return false
         return true
         return true
+    }
+
+    fun export() : Boolean{
+        val folder = File("${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)}/SQLite")
+        if(!folder.exists()){
+            folder.mkdir()
+        }
+        //Nombre del archivo
+        val fileName = "conductores.csv" //csv es para archivo de tipo excel
+        val fileNameAndPath = "$folder/$fileName"
+
+        try {
+            //Creando el archivo
+            val documents = FileWriter(fileNameAndPath)
+
+            // Abriendo la base de datos
+            val drivTable = DataBase(act,"API10",null,1).readableDatabase
+            val cursor = drivTable.query("CONDUCTOR", arrayOf("*"),null,null,null,null,null)
+            if(cursor.moveToFirst()){
+                do {
+                    documents.append("${cursor.getString(0)}")
+                    documents.append(",")
+                    documents.append("${cursor.getString(1)}")
+                    documents.append(",")
+                    documents.append("${cursor.getString(2)}")
+                    documents.append(",")
+                    documents.append("${cursor.getString(3)}")
+                    documents.append(",")
+                    documents.append("${cursor.getString(4)}")
+                    documents.append(",")
+                }while (cursor.moveToNext())
+            }
+            drivTable.close()
+            documents.close()
+            //Toast.makeText(context,"NO SE PUDO EXPORTAR EL ARCHIVO",Toast.LENGTH_LONG).show()
+            return true
+        }catch (e: Exception){
+            //Toast.makeText(context,"NO SE PUDO EXPORTAR EL ARCHIVO",Toast.LENGTH_LONG).show()
+            return false
+        }
     }
 }

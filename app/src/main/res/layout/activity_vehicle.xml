@@ -5,25 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="15dp"
+    android:background="@drawable/fondo9"
     tools:context=".VehicleActivity">
 
     <EditText
         android:id="@+id/licencePlate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_margin="10dp"
         android:hint="Licence Plates"/>
 
     <EditText
         android:id="@+id/brand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_margin="10dp"
         android:hint="Vehicle Brand"/>
 
     <EditText
         android:id="@+id/model"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_margin="10dp"
         android:hint="Vehicle Model"/>
 
     <EditText
@@ -31,6 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_margin="10dp"
         android:hint="Vehicle Year"/>
 
     <Button
@@ -38,6 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:backgroundTint="#792BD325"
         android:text="Update"/>
 
     <Button
@@ -45,6 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:backgroundTint="#9F3125D3"
         android:text="Regresar"/>
 
 </LinearLayout>

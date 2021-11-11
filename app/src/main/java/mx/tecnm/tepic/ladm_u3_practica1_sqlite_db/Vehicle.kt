@@ -78,4 +78,13 @@ class Vehicle(vehicle: Context) {
         if (result == 0) return false
         return true
     }
+
+    fun delete(id: Int ) : Boolean{
+        val drivTable = DataBase(act,"API10",null,1).writableDatabase
+        val result = drivTable.delete("VEHICULO","ID_VEHICULO=?", arrayOf(id.toString()))
+        if(result == 0){
+            return false
+        }
+        return true
+    }
 }

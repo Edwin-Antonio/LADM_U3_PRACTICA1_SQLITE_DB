@@ -17,7 +17,7 @@ class UpdateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update)
-
+        this.setTitle("Inspeccionando Trabajador");
         var extra = intent.extras
         id = extra!!.getString("idUpdate")!! //Debe de llamarse igual que como lo nombramos en el otro activity
 
@@ -65,9 +65,9 @@ class UpdateActivity : AppCompatActivity() {
         // El tipo de dato final de result es de tipo ArrayList<String>
         val result = Vehicle(this).request(id)
         listsVehicle.adapter = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,result)
-        //idVehicle.clear()
-        //idVehicle = Driver(this).getIds()
-        //eventAction(listsVehicle)
+        idVehicle.clear()
+        idVehicle = Vehicle(this).getIds()
+        eventAction(listsVehicle)
     }
     private fun cleanUpdateText(){
         updateName.setText("")
@@ -80,6 +80,41 @@ class UpdateActivity : AppCompatActivity() {
         val caller2 = Intent(this,VehicleActivity::class.java)
         caller2.putExtra("idUpdateDriver",id)
         startActivity(caller2)
+        AlertDialog.Builder(this)
+            .setMessage("¿Deseas actualizar la lista?")
+            .setPositiveButton("SI"){d, i-> listResultUpdate()}
+            .setNegativeButton("NO"){d,i-> d.cancel()}
+            .show()
+    }
+
+    private fun eventAction(vehicleList : ListView){
+        vehicleList.setOnItemClickListener { parent, view, position, id ->
+            val selectedId = idVehicle[position]
+            AlertDialog.Builder(this)
+                .setTitle("ATENCIÓN")
+                .setMessage("¿Que se desea hacer con el conductor seleccionado?"+"\n\n"+ "${vehicleList.getItemAtPosition(position)}")
+                .setPositiveButton("EDITAR"){d, i-> /*updateDriver(selectedId)*/}
+                .setNegativeButton("ELIMINAR"){d,i-> deleteVehicle(selectedId)}
+                .setNeutralButton("CANCELAR"){d,i-> d.cancel()}
+                .show()
+        }
+    }
+
+    private fun deleteVehicle(id: Int){
+        AlertDialog.Builder(this)
+            .setTitle("!ADVERTENCIA¡")
+            .setMessage("¿Seguro de que deseas eliminar este usuario?")
+            .setPositiveButton("SI"){d, i->
+                val result = Vehicle(this).delete(id)
+                if(result){
+                    Toast.makeText(this,"SE ELIMINO CORRECTAMENTE", Toast.LENGTH_LONG).show()
+                    listResultUpdate()
+                }else{
+                    Toast.makeText(this,"NO SE LOGRO BORRAR", Toast.LENGTH_LONG).show()
+                }
+            }
+            .setNegativeButton("NO"){d,i-> d.cancel()}
+            .show()
     }
 
 }

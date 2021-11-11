@@ -11,11 +11,11 @@ class VehicleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vehicle)
-
+        this.setTitle("Agregando Nuevo Vehiculo");
         var extra = intent.extras
         id = extra!!.getString("idUpdateDriver")!! //Debe de llamarse igual que como lo nombramos en el otro activity
 
-        licencePlate.setText(id)
+        //licencePlate.setText(id)
         btn_updateVehicle.setOnClickListener {
             val vehicleUpdate = Vehicle(this)
             vehicleUpdate.plate = licencePlate.text.toString()
@@ -38,9 +38,9 @@ class VehicleActivity : AppCompatActivity() {
     }
 
     private fun cleanVehicleText(){
-        updateName.setText("")
-        updateAddress.setText("")
-        updateNumber.setText("")
-        updateDate.setText("")
+        licencePlate.setText("")
+        brand.setText("")
+        model.setText("")
+        year.setText("")
     }
 }

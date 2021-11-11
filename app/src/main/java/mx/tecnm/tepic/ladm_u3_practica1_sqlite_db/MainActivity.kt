@@ -32,6 +32,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"NO SE CAPTURARON LOS DATOS", Toast.LENGTH_LONG).show()
             }
         }
+
+        btn_export.setOnClickListener {
+            val driver = Driver(this).export()
+            if(Driver(this).export()){
+                Toast.makeText(this,"¡¡ARCHIVO EXPORTADO CON EXITO!!",Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this,"NO SE PUDO EXPORTAR EL ARCHIVO",Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun eventAction(driverList : ListView){
